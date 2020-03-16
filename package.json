@@ -1,6 +1,6 @@
 {
     "name": "react-event-generator-for-email-calendar",
-    "version": "1.0.0-beta.1",
+    "version": "1.0.0",
     "description": "A collection of buttons for adding an event to the Google calendar & more",
     "main": "./lib/index.js",
     "license": "MIT",
