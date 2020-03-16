@@ -4,15 +4,20 @@ import PropTypes from 'prop-types';
 export class AddEventGoogleButton extends React.Component {    
     
     render() {
-        const link = "http://www.google.com/calendar/event?action=TEMPLATE"
-                    +"&text="+this.formatText(this.props.title)
-                    +"&dates="+this.formatDate(this.props.isAllDay,this.props.dateStart,this.props.dateEnd)
-                    +"&details="+this.formatText(this.props.description)
-                    +"&location="+this.formatText(this.props.location);
+        const {styles,textButton,className} = this.props;
+        const link = this.buildLink();
 
         return (
-            <a href={link}>Add event google</a>
+            <a target={"target"} className={className} style={(className)?{}:styles.button} href={link}>{textButton}</a>
         );
+    }
+
+    buildLink = () => {
+        return ("http://www.google.com/calendar/event?action=TEMPLATE"
+                +"&text="+this.formatText(this.props.title)
+                +"&dates="+this.formatDate(this.props.isAllDay,this.props.dateStart,this.props.dateEnd)
+                +"&details="+this.formatText(this.props.description)
+                +"&location="+this.formatText(this.props.location));
     }
 
     formatText = (text) => {
@@ -22,18 +27,23 @@ export class AddEventGoogleButton extends React.Component {
     formatDate = (isAllDay,dateStart,dateEnd) =>{
         var start ="", end="";
         
-        if(dateStart)
+        if(isAllDay){
             start = this.toGoogleFormat(dateStart);
-        
-        if(!isAllDay  && dateEnd)
-            end = this.toGoogleFormat(dateEnd);
-        else{
+            dateStart.setDate(dateStart.getDate()+1);
             
-            dateStart.setDate(dateStart.getDate()+1)
             end = this.toGoogleFormat(dateStart);
+
+            start = start.split("T")[0];
+            end = end.split("T")[0];
+        }
+        else{
+            start = this.toGoogleFormat(dateStart);
+            end = this.toGoogleFormat(dateEnd);
         }
         return start + "/" + end;
     }
+
+    
 
     toGoogleFormat = (dateProp) =>{
 
@@ -60,7 +70,22 @@ AddEventGoogleButton.defaultProps = {
     description: "",
     location: "",
     dateStart:new Date(),
-    isAllDay:true
+    isAllDay:true,
+    target:"_blank",
+
+    className:"",
+    textButton:"Add to Google calendar",
+
+    styles: {
+        button: {
+            padding:'10px',
+            background: '#fff',
+            border: '1px solid red',
+            color:"#000",
+            textDecoration:"none",
+            display:"inline-block"
+        }
+    }
 };
 
 export default AddEventGoogleButton;
