@@ -1,9 +1,23 @@
 {
     "name": "react-event-generator-for-email-calendar",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A collection of buttons for adding an event to the Google calendar & more",
     "main": "./lib/index.js",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rogeriomattos/react-event-generator-for-email-calendar"
+    },
+    "keywords": [
+        "react",
+        "react-component",
+        "event",
+        "google-calendar"
+    ],
+    "author": "Rafał Pocztarski <rogeriomattos38@outlook.com> (https://rogeriomattos.github.io/)",
+    "bugs": {
+        "url": "https://github.com/rogeriomattos/react-event-generator-for-email-calendar/issues"
+    },
     "scripts": {
         "build": "webpack"
     },

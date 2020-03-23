@@ -1,8 +1,8 @@
-# [React event generator for email calendar](https://www.npmjs.com/package/react-event-generator-for-email-calendar)
+# React event generator for email calendar
 
 React event generator for email calendar is a component made in reactjs, it creates a button where the user can create an event in the calendar of his email account
 
-## About this version 1.0.1
+## About this version 1.0.2
 Currently, this version has only the Google Calendar component.
 
 ## Installation
